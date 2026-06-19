@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solo Saudável, Futuro Sustentável</title>
+    <style>
+        /* Paleta de Cores e Configurações Globais */
+        :root {
+            --primary: #2d6a4f;
+            --primary-light: #40916c;
+            --secondary: #d8f3dc;
+            --dark: #1b4332;
+            --light: #f8f9fa;
+            --text: #212529;
+            --accent: #b7efc5;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Barra de Navegação */
+        header {
+            background-color: var(--dark);
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Banner */
+        .hero {
+            background: linear-gradient(rgba(27, 67, 50, 0.85), rgba(27, 67, 50, 0.95)), 
+                        url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 30px;
+        }
+
+        /* Componentes e Botões */
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-light);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Seções de Conteúdo (Grid Responsivo) */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            color: var(--dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid var(--primary);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .card p {
+            color: #555;
+            font-size: 1rem;
+        }
+
+        /* Destaques e Callouts */
+        .highlight-section {
+            background-color: var(--secondary);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .highlight-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .highlight-content h2 {
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        .highlight-content p {
+            font-size: 1.2rem;
+            color: var(--dark);
+            font-style: italic;
+        }
+
+        /* Interatividade */
+        .interactive-section {
+            background-color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .action-box {
+            background-color: var(--light);
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: 20px auto;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        #action-text {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--dark);
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            transition: opacity 0.2s ease;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* Regras de Responsividade para Mobile */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">Solo Saudável 🌱</div>
+            <ul class="nav-links">
+                <li><a href="#importancia">Importância</a></li>
+                <li><a href="#desafios">Desafios & Soluções</a></li>
+                <li><a href="#acoes">Ações</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Solo Saudável, Futuro Sustentável</h1>
+            <p>O solo é um recurso natural essencial para a vida. Ele fornece nutrientes para as plantas crescerem e sustenta toda a cadeia de produção de alimentos da qual dependemos.</p>
+            <a href="#importancia" class="btn">Saiba Mais</a>
+        </div>
+    </section>
+
+    <section id="importancia" class="container">
+        <h2 class="section-title">A Importância do Solo</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Sustentação da Vida</h3>
+                <p>A produção de alimentos depende diretamente de um solo saudável. Quando é bem cuidado, ele permanece fértil por muito mais tempo.</p>
+            </div>
+            <div class="card">
+                <h3>Recursos Hídricos</h3>
+                <p>Além de alimentar a flora, o solo ajuda a armazenar água de forma eficiente, regulando o fluxo hídrico nos ecossistemas.</p>
+            </div>
+            <div class="card">
+                <h3>Biodiversidade</h3>
+                <p>O solo abriga diversos organismos importantes. Um solo saudável favorece a biodiversidade e contribui para o equilíbrio de todo o ecossistema.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="highlight-section">
+        <div class="highlight-content">
+            <h2>Compromisso Coletivo</h2>
+            <p>"Sua preservação beneficia toda a sociedade. Cuidar do solo é cuidar do futuro. As próximas gerações dependem dessa responsabilidade."</p>
+        </div>
+    </section>
+
+    <section id="desafios" class="container">
+        <h2 class="section-title">Desafios & Práticas Sustentáveis</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Ameaças e Degradação</h3>
+                <p>A erosão, a poluição e o desmatamento podem degradá-lo severamente. Por isso, é de extrema importância preservar a vegetação nativa.</p>
+            </div>
+            <div class="card">
+                <h3>Agricultura Consciente</h3>
+                <p>Práticas agrícolas sustentáveis ajudam diretamente na conservação. A rotação de culturas, por exemplo, melhora significativamente a qualidade do solo.</p>
+            </div>
+            <div class="card">
+                <h3>Impacto Ambiental</h3>
+                <p>O uso consciente dos recursos reduz os impactos ambientais e garante que a terra continue gerando frutos de maneira estável.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="acoes" class="interactive-section">
+        <div class="container" style="padding-top: 0; padding-bottom: 0;">
+            <h2 class="section-title">Como Você Pode Contribuir?</h2>
+            <p>Pequenas ações podem gerar grandes resultados. Descubra uma atitude sustentável que você pode tomar hoje:</p>
+            
+            <div class="action-box">
+                <div id="action-text">Clique no botão abaixo para gerar uma ação inspiradora!</div>
+                <button class="btn" id="action-btn">Mudar o Amanhã</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p><strong>Solo saudável significa futuro sustentável para todos.</strong></p>
+        <p>&copy; 2026 Solo Saudável. Todos os direitos reservados. A sustentabilidade começa com a proteção da natureza.</p>
+    </footer>
+
+    <script>
+        const actions = [
+            "Apoie agricultores locais que utilizam a rotação de culturas.",
+            "Faça compostagem doméstica para devolver nutrientes orgânicos ao solo.",
+            "Evite o uso de defensivos químicos ou pesticidas em seu jardim.",
+            "Ajude a preservar e plantar vegetação nativa na sua comunidade para evitar a erosão.",
+            "Consuma produtos de marcas que possuem práticas comprovadamente sustentáveis.",
+            "Reduza o desperdício de água, ajudando a manter o equilíbrio hídrico natural da terra."
+        ];
+
+        const actionBtn = document.getElementById('action-btn');
+        const actionText = document.getElementById('action-text');
+
+        actionBtn.addEventListener('click', () => {
+            const randomIndex = Math.floor(Math.random() * actions.length);
+            actionText.style.opacity = 0;
+            setTimeout(() => {
+                actionText.textContent = actions[randomIndex];
+                actionText.style.opacity = 1;
+            }, 200);
+        });
+    </script>
+</body>
+</html>

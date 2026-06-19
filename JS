@@ -1,0 +1,22 @@
+// Lógica para alternar entre as abas
+document.addEventListener('DOMContentLoaded', () => {
+  const buttons = document.querySelectorAll('.tab-btn');
+  const panes = document.querySelectorAll('.tab-pane');
+
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      const targetTab = button.getAttribute('data-tab');
+
+      // Remove a classe ativa de todos os botões e painéis
+      buttons.forEach(btn => btn.classList.remove('active'));
+      panes.forEach(pane => pane.classList.remove('active'));
+
+      // Adiciona a classe ativa ao botão clicado e ao painel correspondente
+      button.classList.add('active');
+      const activePane = document.getElementById(targetTab);
+      if (activePane) {
+        activePane.classList.add('active');
+      }
+    });
+  });
+});

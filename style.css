@@ -1,0 +1,43 @@
+/* Estilos para o componente de abas */
+.tabs-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+  font-family: sans-serif;
+}
+
+.tab-buttons {
+  display: flex;
+  border-bottom: 2px solid #ccc;
+}
+
+.tab-btn {
+  padding: 10px 20px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+.tab-btn:hover {
+  background-color: #f0f0f0;
+}
+
+.tab-btn.active {
+  border-bottom: 2px solid #007bff;
+  color: #007bff;
+  font-weight: bold;
+}
+
+.tab-content {
+  padding: 20px 0;
+}
+
+.tab-pane {
+  display: none;
+}
+
+.tab-pane.active {
+  display: block;
+}
